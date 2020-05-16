@@ -13,6 +13,9 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+/**
+ * An example of changing the taborder of a frame.
+ */
 public class TabOrderFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
