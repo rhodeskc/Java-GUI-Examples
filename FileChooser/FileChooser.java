@@ -51,7 +51,9 @@ public class FileChooser extends JFrame {
         thisFrame.setLocationRelativeTo(null);
     }
 
-    // Create the UI for the File Chooser app.
+    /**
+    * Create the UI for the File Chooser app.
+    */
     private JFrame createUI() {
         lblInstructions = new JLabel("<html><h1>Choose a file or directory</h1></html>");
         lblOutput = new JLabel("", JLabel.CENTER);
