@@ -4,7 +4,9 @@ import java.awt.GridLayout;
 import java.util.Random;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
+import ArbitraryNumberOfPanes.PaneVariations.JPanelFileChooser;
 import ArbitraryNumberOfPanes.PaneVariations.JPanelTextPane;
 
 /**
@@ -13,7 +15,7 @@ import ArbitraryNumberOfPanes.PaneVariations.JPanelTextPane;
 public class ArbitraryNumberOfPanes {
     public static void main(String[] args) {
         Random rand = new Random();
-        int numberOfPanes = rand.nextInt(9) + 1;
+        int numberOfPanes = rand.nextInt(4) + 5;
         System.out.println("Number of panes expected: " + numberOfPanes);
                 
         JFrame frame = new JFrame("Arbitrary Number of Panes");
@@ -23,7 +25,22 @@ public class ArbitraryNumberOfPanes {
         frame.setLocationRelativeTo(null);
 
         for (int i = 0; i < numberOfPanes; i++) {
-            frame.getContentPane().add(new JPanelTextPane());
+            JPanel panel; 
+            int randomInt = rand.nextInt(2);
+            String lblValue = String.valueOf(i) + "_" + String.valueOf(randomInt);
+
+            switch(randomInt) {
+                case 0:
+                    panel = new JPanelTextPane(lblValue);
+                    break;
+                case 1:
+                    panel = new JPanelFileChooser(lblValue);
+                    break;
+                default:
+                    panel = null;
+            }
+
+            frame.getContentPane().add(panel);
         }
 
         frame.pack();
