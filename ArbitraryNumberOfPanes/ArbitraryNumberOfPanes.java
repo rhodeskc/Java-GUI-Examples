@@ -6,6 +6,7 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import ArbitraryNumberOfPanes.PaneVariations.JPanelCombobox;
 import ArbitraryNumberOfPanes.PaneVariations.JPanelFileChooser;
 import ArbitraryNumberOfPanes.PaneVariations.JPanelTextPane;
 
@@ -15,7 +16,7 @@ import ArbitraryNumberOfPanes.PaneVariations.JPanelTextPane;
 public class ArbitraryNumberOfPanes {
     public static void main(String[] args) {
         Random rand = new Random();
-        int numberOfPanes = rand.nextInt(4) + 5;
+        int numberOfPanes = rand.nextInt(5) + 5;
         System.out.println("Number of panes expected: " + numberOfPanes);
                 
         JFrame frame = new JFrame("Arbitrary Number of Panes");
@@ -26,7 +27,7 @@ public class ArbitraryNumberOfPanes {
 
         for (int i = 0; i < numberOfPanes; i++) {
             JPanel panel; 
-            int randomInt = rand.nextInt(2);
+            int randomInt = rand.nextInt(3);
             String lblValue = String.valueOf(i) + "_" + String.valueOf(randomInt);
 
             switch(randomInt) {
@@ -35,6 +36,9 @@ public class ArbitraryNumberOfPanes {
                     break;
                 case 1:
                     panel = new JPanelFileChooser(lblValue);
+                    break;
+                case 2:
+                    panel = new JPanelCombobox(lblValue);
                     break;
                 default:
                     panel = null;
