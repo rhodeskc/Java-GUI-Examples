@@ -6,44 +6,55 @@ import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import ArbitraryNumberOfPanes.PaneVariations.JPanelCombobox;
-import ArbitraryNumberOfPanes.PaneVariations.JPanelFileChooser;
-import ArbitraryNumberOfPanes.PaneVariations.JPanelTextPane;
+import ArbitraryNumberOfPanes.PaneVariations.*;
 
 /**
  * Add an arbitrary number of panes to the frame and then display it.
  */
 public class ArbitraryNumberOfPanes {
-    public static void main(String[] args) {
-        Random rand = new Random();
-        int numberOfPanes = rand.nextInt(5) + 5;
+    public static void main(final String[] args) {
+        final int bound = 4;
+
+        final Random rand = new Random();
+        final int numberOfPanes = rand.nextInt(10) + 5;
         System.out.println("Number of panes expected: " + numberOfPanes);
-                
-        JFrame frame = new JFrame("Arbitrary Number of Panes");
-        GridLayout layout = new GridLayout(numberOfPanes, 1);
+
+        final JFrame frame = new JFrame("Arbitrary Number of Panes");
+        final GridLayout layout = new GridLayout(numberOfPanes, 1);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(layout);
         frame.setLocationRelativeTo(null);
 
         for (int i = 0; i < numberOfPanes; i++) {
-            JPanel panel; 
-            int randomInt = rand.nextInt(3);
-            String lblValue = String.valueOf(i) + "_" + String.valueOf(randomInt);
+            JPanelCustomBase thisComponent;
+            JPanel panel;
 
-            switch(randomInt) {
+            final int panelSelector = i % bound;
+            final String lblValue = String.valueOf(i) + "_" + String.valueOf(panelSelector);
+
+            switch (panelSelector) {
                 case 0:
-                    panel = new JPanelTextPane(lblValue);
+                    thisComponent = new JPanelTextPane(lblValue);
+                    panel = thisComponent;
                     break;
                 case 1:
-                    panel = new JPanelFileChooser(lblValue);
+                    thisComponent = new JPanelFileChooser(lblValue);
+                    panel = thisComponent;
                     break;
                 case 2:
-                    panel = new JPanelCombobox(lblValue);
+                    thisComponent = new JPanelCombobox(lblValue);
+                    panel = thisComponent;
+                    break;
+                case 3:
+                    thisComponent = new JPanelRadioButton(lblValue);
+                    panel = thisComponent;
                     break;
                 default:
                     panel = null;
+                    thisComponent = null;
             }
 
+            System.out.println(lblValue + ": " + thisComponent.getValue());
             frame.getContentPane().add(panel);
         }
 

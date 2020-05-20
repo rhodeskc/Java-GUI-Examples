@@ -1,12 +1,9 @@
 package ArbitraryNumberOfPanes.PaneVariations;
 
-import java.awt.Dimension;
-
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 
-public class JPanelCombobox extends JPanel implements IPanelInterface {
+public class JPanelCombobox extends JPanelCustomBase {
     private static final long serialVersionUID = 1L;
 
     private String m_Name;
@@ -19,14 +16,14 @@ public class JPanelCombobox extends JPanel implements IPanelInterface {
         cboValue = new JComboBox<String>(defaultComboItems);
         m_Name = null;
 
-        setPreferredSize(new Dimension(515, 30));
+        setPreferredSize(default_PreferredSize);
         setLayout(null);
 
         add(lblField);
         add(cboValue);
 
-        lblField.setBounds(5, 2, 200, 25);
-        cboValue.setBounds(210, 2, 195, 25);
+        lblField.setBounds(default_LabelRectangle);
+        cboValue.setBounds(default_ComponentRectangle);
     }
 
     /**

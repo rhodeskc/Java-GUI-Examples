@@ -1,6 +1,5 @@
 package ArbitraryNumberOfPanes.PaneVariations;
 
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -8,10 +7,9 @@ import java.io.File;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class JPanelFileChooser extends JPanel implements IPanelInterface {
+public class JPanelFileChooser extends JPanelCustomBase {
     private static final long serialVersionUID = 1L;
 
     private String m_Name;
@@ -27,17 +25,16 @@ public class JPanelFileChooser extends JPanel implements IPanelInterface {
         m_Name = null;
 
         btnChooseFile.setMnemonic('b');
-        ;
-        setPreferredSize(new Dimension(515, 30));
+        setPreferredSize(default_PreferredSize);
         setLayout(null);
 
         add(lblField);
         add(txtValue);
         add(btnChooseFile);
 
-        lblField.setBounds(5, 2, 200, 25);
-        txtValue.setBounds(210, 2, 195, 25);
-        btnChooseFile.setBounds(410, 2, 100, 25);
+        lblField.setBounds(default_LabelRectangle);
+        txtValue.setBounds(default_ComponentRectangle);
+        btnChooseFile.setBounds(default_RightSideComponent);
 
         addActionListeners();
     }
